@@ -1,0 +1,11 @@
+package components
+
+import "github.com/anuragchauhan766/to-do-golang-htmx/model"
+
+templ TodoContainer(t model.TodosType) {
+	<div class="flex flex-col gap-4 items-center w-full justify-center" id="todoContainer">
+		for _, value := range t {
+			@TodoCard(value)
+		}
+	</div>
+}

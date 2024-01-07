@@ -1,0 +1,39 @@
+package pages
+
+import "github.com/anuragchauhan766/to-do-golang-htmx/view/layout"
+import "github.com/anuragchauhan766/to-do-golang-htmx/view/components"
+import "github.com/anuragchauhan766/to-do-golang-htmx/model"
+
+templ Home() {
+	@layout.Index() {
+		<div class="w-full h-screen bg-primary flex items-center justify-center">
+			<div class="max-w-screen-md  w-full h-full p-10">
+				<div class="w-full h-full bg-secondary rounded-lg flex p-10 flex-col  items-center gap-4">
+					<h1 class="text-3xl text-ctc font-extrabold">
+						<i class="fa-solid fa-square-check text-ctc"></i>
+						<span>
+							My Todo
+						</span>
+					</h1>
+					<hr class="h-1 bg-primary border-none rounded-lg w-full"/>
+					<div class="flex flex-col gap-4 py-4 items-center w-full justify-center">
+						<form hx-post="/api/v1/todo" class="w-3/4 text-lg font-bold rounded-lg flex items-center justify-center" hx-target="#todoContainer" hx-on::after-request="this.reset()">
+							<input
+								type="text"
+								placeholder="Add items..."
+								class="h-14 w-3/4 text-black  appearance-none outline-none border-none ring-0 focus:ring-0 focus:ring-transparent border-4 border-ctc focus:border-ctc py-3 px-4 rounded-l-lg placeholder:text-gray-400"
+								name="todoContent"
+							/>
+							<button type="submit" class="h-14 w-1/4 text-white bg-ctc hover:bg-ctc-light rounded-r-lg p-2">Add</button>
+						</form>
+						<div class="flex flex-col gap-4 items-center w-full justify-center" id="todoContainer">
+							for _ , value := range model.Todos {
+								@components.TodoCard(value)
+							}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	}
+}

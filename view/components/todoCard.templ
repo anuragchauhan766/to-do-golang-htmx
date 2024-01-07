@@ -1,0 +1,15 @@
+package components
+
+import "github.com/anuragchauhan766/to-do-golang-htmx/model"
+import "strconv"
+
+templ TodoCard(todo model.Todo) {
+	<div id={ strconv.Itoa(todo.Id) } class="w-3/4 h-14 px-4 py-3 flex flex-row items-center justify-between rounded-lg bg-primary ">
+		<div class="w-3/4 flex items-center justify-start font-bold text-lg text-gray-600">{ todo.Text }</div>
+		<div>
+			<button hx-delete={ "/api/v1/todo/" + strconv.Itoa(todo.Id) } hx-trigger="click" hx-target="#todoContainer" class="py-2 px-4 rounded-lg hover:bg-secondary hover:scale-110 transition-transform duration-400 ease-in-out">
+				<i class="fa-solid fa-trash text-ctc text-lg"></i>
+			</button>
+		</div>
+	</div>
+}
