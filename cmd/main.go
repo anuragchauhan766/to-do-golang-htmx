@@ -21,5 +21,6 @@ func main() {
 	api := e.Group("/api")
 	v1.ApiSetup(api)
 
-	e.Logger.Fatal(e.Start(":5000"))
+	port := utils.GetEnv("PORT", "5000")
+	e.Logger.Fatal(e.Start(":" + port))
 }

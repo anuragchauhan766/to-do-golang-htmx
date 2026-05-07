@@ -1,0 +1,10 @@
+.git
+node_modules
+tmp
+bin
+dist
+*.out
+.air.toml
+Dockerfile
+.dockerignore
+tailwindcss

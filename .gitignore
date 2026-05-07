@@ -1,0 +1,21 @@
+# Binaries
+bin/
+dist/
+tmp/
+*.out
+*.exe
+tailwindcss
+
+# Templ generated files
+# You can choose to ignore them if you want a clean git status,
+# but remember they are needed for the build.
+# Most people ignore them and generate them during CI/CD.
+*_templ.go
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
